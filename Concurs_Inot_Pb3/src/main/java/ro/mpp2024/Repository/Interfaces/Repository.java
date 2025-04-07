@@ -1,4 +1,4 @@
-package ro.mpp2024.Repository;
+package ro.mpp2024.Repository.Interfaces;
 
 import ro.mpp2024.Domain.Entity;
 

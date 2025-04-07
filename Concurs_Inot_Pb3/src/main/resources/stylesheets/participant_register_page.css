@@ -1,0 +1,9 @@
+.inputAreaVBox {
+    -fx-padding: 10px;
+    -fx-spacing: 10px;
+}
+.errorLabel {
+    -fx-font-size: 10pt;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ca1313;
+}

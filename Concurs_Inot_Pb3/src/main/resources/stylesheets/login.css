@@ -1,0 +1,33 @@
+/* Aplica stil pe toate butoanele */
+Label {
+    -fx-font-size: 22pt;
+    -fx-font-weight: bold;
+}
+
+.errorLabel {
+    -fx-font-size: 7pt;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ca1313;
+}
+
+VBox {
+    -fx-background-color: #B4EBE6;
+    -fx-padding: 15px 60px;
+    -fx-border-color: #80CBC4;
+    -fx-border-width: 0px 1px 0px 0px;
+    -fx-spacing: 10px;
+}
+
+Button {
+    -fx-background-radius: 5px;
+    -fx-background-color: #FFB433;
+    -fx-text-fill: white;
+    -fx-font-weight: 900;
+    -fx-font-size: 14pt;
+    -fx-padding: 2px 5px;
+}
+
+Button:hover {
+    -fx-background-color: #e8a126;
+}
+

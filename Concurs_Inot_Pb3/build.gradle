@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'application'
 }
 
 group = 'ro.mpp2024'
@@ -9,11 +10,46 @@ repositories {
     mavenCentral()
 }
 
+
+application {
+    mainClass = 'ro.mpp2024.App'
+
+}
+
+def javafxVersion = '23'
+def currentPlatform = org.gradle.internal.os.OperatingSystem.current().isWindows() ? 'win' :
+        org.gradle.internal.os.OperatingSystem.current().isMacOsX() ? 'mac' : 'linux'
+
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
+
+    testImplementation platform('org.junit:junit-bom:5.10.0') // Asta e corect
     testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core
+    implementation 'org.apache.logging.log4j:log4j-core:2.24.3'
+    // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api
+    implementation 'org.apache.logging.log4j:log4j-api:2.24.3'
+
+    // https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc
+    implementation 'org.xerial:sqlite-jdbc:3.49.1.0'
+
+
+    implementation "org.openjfx:javafx-controls:$javafxVersion:$currentPlatform"
+    implementation "org.openjfx:javafx-fxml:$javafxVersion:$currentPlatform"
+    implementation "org.openjfx:javafx-graphics:$javafxVersion:$currentPlatform"
+    implementation "org.openjfx:javafx-base:$javafxVersion:$currentPlatform"
+
 }
 
 test {
     useJUnitPlatform()
+}
+
+tasks.named('run') {
+    doFirst {
+        jvmArgs = [
+                "--module-path", configurations.runtimeClasspath.asPath,
+                "--add-modules", "javafx.controls,javafx.fxml,javafx.graphics"
+        ]
+    }
 }

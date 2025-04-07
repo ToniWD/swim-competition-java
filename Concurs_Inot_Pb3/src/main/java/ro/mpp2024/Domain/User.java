@@ -1,6 +1,6 @@
 package ro.mpp2024.Domain;
 
-public class User {
+public class User extends Entity<Long> {
     private String username;
     private String password;
 
