@@ -4,6 +4,7 @@ public class Participant extends Entity<Long> {
     private String firstName;
     private String lastName;
     private int age;
+    private int nrEvents = -1;
 
     public Participant(String firstName, String lastName, int age) {
         this.firstName = firstName;
@@ -33,5 +34,12 @@ public class Participant extends Entity<Long> {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public int getNrEvents() {
+        return nrEvents;
+    }
+    public void setNrEvents(int nrEvents) {
+        this.nrEvents = nrEvents;
     }
 }

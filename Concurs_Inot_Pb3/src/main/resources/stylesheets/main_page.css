@@ -1,0 +1,39 @@
+AnchorPane {
+    -fx-background-color: #80CBC4;
+}
+
+.PageControlBox {
+    -fx-background-color: #B4EBE6;
+    -fx-spacing: 16px;
+    -fx-border-width: 2px 0px 0px 0px;
+    -fx-border-color: #8cd5ce;
+}
+
+.PageControlBox Label {
+    -fx-text-fill: #3f6561;
+    -fx-font-size: 14pt;
+    -fx-font-weight: 900;
+
+}
+
+.PageControlBox Button {
+    -fx-background-radius: 5px;
+    -fx-background-color: #FFB433;
+    -fx-text-fill: white;
+    -fx-font-weight: 900;
+    -fx-font-size: 14pt;
+    -fx-padding: 2px 5px;
+}
+
+.PageControlBox Button:hover {
+    -fx-background-color: #e8a126;
+}
+
+.swimmingEventContainer {
+    -fx-background-color: #ff1654;
+}
+
+#participantsVBox {
+    -fx-border-color: #80CBC4;
+    -fx-border-width: 0px 0px 0px 3px;
+}

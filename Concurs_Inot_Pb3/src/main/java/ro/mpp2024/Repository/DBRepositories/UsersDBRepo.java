@@ -26,6 +26,36 @@ public class UsersDBRepo implements UsersRepository {
     }
 
     @Override
+    public Optional<User> findByUsername(String username) {
+        logger.traceEntry();
+
+        User user = null;
+        Connection con = dbUtils.getConnection();
+
+        try (PreparedStatement preStmt = con.prepareStatement(
+                "SELECT id, password FROM users where username = ?"
+        ))
+        {
+            preStmt.setString(1, username);
+            ResultSet resultSet = preStmt.executeQuery();
+
+            if(resultSet.next()){
+                Long id = resultSet.getLong("id");
+                String password = resultSet.getString("password");
+
+                user = new User(username, password);
+                user.setId(id);
+            }
+        }
+        catch (SQLException ex) {
+            logger.error(ex);
+        }
+        logger.traceExit();
+
+        return Optional.ofNullable(user);
+    }
+
+    @Override
     public Optional<User> findOne(Long id) {
         logger.traceEntry();
 
@@ -45,8 +75,8 @@ public class UsersDBRepo implements UsersRepository {
             ResultSet resultSet = preStmt.executeQuery();
 
             if(resultSet.next()){
-                String username = resultSet.getString("first_name");
-                String password = resultSet.getString("last_name");
+                String username = resultSet.getString("username");
+                String password = resultSet.getString("password");
 
                 user = new User(username, password);
                 user.setId(id);
@@ -54,7 +84,6 @@ public class UsersDBRepo implements UsersRepository {
         }
         catch (SQLException ex) {
             logger.error(ex);
-            System.err.println("Error DB"+ex);
         }
         logger.traceExit();
 
@@ -84,7 +113,6 @@ public class UsersDBRepo implements UsersRepository {
         }
         catch (SQLException ex){
             logger.error(ex);
-            System.err.println("Error DB"+ex);
         }
         logger.traceExit();
         return users;
@@ -115,7 +143,7 @@ public class UsersDBRepo implements UsersRepository {
         }
         catch (SQLException ex){
             logger.error(ex.getMessage());
-            System.err.println("Error DB"+ex);
+            throw new RepoException("Can't save user");
         }
         logger.traceExit();
 
@@ -153,7 +181,6 @@ public class UsersDBRepo implements UsersRepository {
             }
             catch (SQLException ex){
                 logger.error(ex.getMessage());
-                System.err.println("Error DB"+ex);
             }
         }
         logger.traceExit();
@@ -165,4 +192,6 @@ public class UsersDBRepo implements UsersRepository {
     public Optional<User> update(User entity) {
         return Optional.empty();
     }
+
+
 }

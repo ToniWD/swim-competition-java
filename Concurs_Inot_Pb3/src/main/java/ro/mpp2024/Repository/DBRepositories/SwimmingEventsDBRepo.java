@@ -55,7 +55,6 @@ public class SwimmingEventsDBRepo implements SwimmingEventsRepository {
         }
         catch (SQLException ex) {
             logger.error(ex);
-            System.err.println("Error DB"+ex);
         }
         logger.traceExit();
 
@@ -69,15 +68,24 @@ public class SwimmingEventsDBRepo implements SwimmingEventsRepository {
         Connection con=dbUtils.getConnection();
         List<SwimmingEvent> events = new ArrayList<>();
 
-        try(PreparedStatement preStmt = con.prepareStatement("select id, distance, style from swimming_events")){
+        try(PreparedStatement preStmt = con.prepareStatement("SELECT\n" +
+                "    se.id AS event_id,\n" +
+                "    se.distance,\n" +
+                "    se.style,\n" +
+                "    COUNT(r.id_participant) AS num_participants\n" +
+                "FROM swimming_events se\n" +
+                "         LEFT JOIN records r ON se.id = r.id_event\n" +
+                "GROUP BY se.id, se.distance, se.style;")){
             try(ResultSet result = preStmt.executeQuery()){
                 while (result.next()){
-                    Long id = result.getLong("id");
+                    Long id = result.getLong("event_id");
                     int distance = result.getInt("distance");
                     String style = result.getString("style");
+                    int nrParticipants = result.getInt("num_participants");
 
                     SwimmingEvent event = new SwimmingEvent(distance, style);
                     event.setId(id);
+                    event.setNrParticipants(nrParticipants);
                     events.add(event);
                 }
             }
@@ -85,7 +93,6 @@ public class SwimmingEventsDBRepo implements SwimmingEventsRepository {
         }
         catch (SQLException ex){
             logger.error(ex);
-            System.err.println("Error DB"+ex);
         }
         logger.traceExit();
         return events;
@@ -116,7 +123,7 @@ public class SwimmingEventsDBRepo implements SwimmingEventsRepository {
         }
         catch (SQLException ex){
             logger.error(ex.getMessage());
-            System.err.println("Error DB"+ex);
+            throw new RepoException("Can't save swimming event");
         }
         logger.traceExit();
 
@@ -154,7 +161,6 @@ public class SwimmingEventsDBRepo implements SwimmingEventsRepository {
             }
             catch (SQLException ex){
                 logger.error(ex.getMessage());
-                System.err.println("Error DB"+ex);
             }
         }
         logger.traceExit();

@@ -84,7 +84,6 @@ public class RecordsDBRepo implements RecordsRepository {
         }
         catch (SQLException ex) {
             logger.error(ex);
-            System.err.println("Error DB"+ex);
         }
         logger.traceExit();
 
@@ -142,7 +141,6 @@ public class RecordsDBRepo implements RecordsRepository {
         }
         catch (SQLException ex){
             logger.error(ex);
-            System.err.println("Error DB"+ex);
         }
         logger.traceExit();
         return records;
@@ -173,7 +171,7 @@ public class RecordsDBRepo implements RecordsRepository {
         }
         catch (SQLException ex){
             logger.error(ex.getMessage());
-            System.err.println("Error DB"+ex);
+            throw new RepoException("Can't save record");
         }
         logger.traceExit();
 
@@ -211,7 +209,6 @@ public class RecordsDBRepo implements RecordsRepository {
             }
             catch (SQLException ex){
                 logger.error(ex.getMessage());
-                System.err.println("Error DB"+ex);
             }
         }
         logger.traceExit();

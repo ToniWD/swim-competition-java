@@ -1,0 +1,80 @@
+ListView {
+    -fx-background-color: #80CBC4;
+    /*-fx-padding: 5px;*/
+}
+
+.containerListItem {
+    -fx-background-color: #B4EBE6;
+    -fx-alignment: center;
+    -fx-padding: 0px;
+    -fx-spacing: 5px;
+    -fx-background-radius: 9px;
+}
+
+.containerListItem > Label{
+    -fx-min-height: 30px;
+    -fx-pref-width: 250px;
+    -fx-text-fill: #3f6561;
+    -fx-font-size: 12pt;
+    -fx-font-weight: bold;
+}
+
+.containerListItem > Button {
+    -fx-background-radius: 5px;
+    -fx-background-color: #FFB433;
+    -fx-text-fill: white;
+    -fx-font-weight: 900;
+    -fx-font-size: 14pt;
+    -fx-padding: 2px 5px;
+}
+
+.containerListItem > Button:hover {
+    -fx-background-color: #e8a126;
+}
+
+ListView .scroll-bar {
+    -fx-background-color: transparent;  /* Bara de derulare devine transparentă */
+    -fx-background-insets: 0; /* Elimină marginea barei de derulare */
+}
+
+/* Setează fundalul transparent pentru barele de derulare la hover */
+ListView .scroll-bar:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.1); /* Bara de derulare devine vizibilă la hover */
+}
+
+/* Bara de derulare verticală */
+ListView .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-padding: 0 0 0 0;
+}
+
+/* Bara de derulare orizontală */
+ListView .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+    -fx-padding: 0 0 0 0;
+}
+
+ListView .scroll-bar .thumb {
+    -fx-background-color: #FFB433;
+}
+
+/*ListView .scroll-bar .thumb:hover {*/
+/*    -fx-background-color: #FFB433; */
+/*}*/
+
+.list-view .scroll-bar .increment-button:hover ,
+.list-view .scroll-bar .decrement-button:hover {
+    -fx-background-color: #FFB433;
+}
+
+.list-view .cell {
+-fx-background-color: transparent;-fx-padding: 5px 0px;}
+
+TextField {
+    -fx-background-radius: 3px;
+    -fx-background-color: #FFB433;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 12pt;
+    -fx-prompt-text-fill: #838383;
+}
