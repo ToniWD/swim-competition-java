@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.RegisterPageController">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <VBox prefHeight="375.0" prefWidth="323.0" styleClass="inputAreaVBox" HBox.hgrow="ALWAYS">
+                     <children>
+                        <TextField fx:id="firstNameTextField" promptText="First Name" />
+                        <TextField fx:id="lastNameTextField" promptText="Last Name" />
+                        <TextField fx:id="ageTextField" promptText="Age" />
+                        <Label fx:id="errorLabel" styleClass="errorLabel" />
+                     </children>
+                  </VBox>
+                  <ListView fx:id="eventsListView" prefHeight="375.0" prefWidth="337.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="46.0" prefWidth="600.0" styleClass="PageControlBox">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#handleRegisterParticipant" text="Register" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+   <stylesheets>
+      <URL value="@../stylesheets/main_page.css" />
+      <URL value="@../stylesheets/participant_register_page.css" />
+      <URL value="@../stylesheets/list_view_and_containers.css" />
+   </stylesheets>
+</AnchorPane>

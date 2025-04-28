@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MainPageController">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <ListView fx:id="eventsListView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                     </children>
+                  </VBox>
+                  <VBox fx:id="participantsVBox" prefHeight="350.0" prefWidth="214.0">
+                     <children>
+                        <TextField fx:id="searchTextField" />
+                        <ListView fx:id="participantsListView" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="48.0" prefWidth="600.0" styleClass="PageControlBox">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#handleNewParticipant" text="Register" />
+                  <Button mnemonicParsing="false" onAction="#handleDisconnect" text="Disconnect" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+   <stylesheets>
+      <URL value="@../stylesheets/main_page.css" />
+      <URL value="@../stylesheets/list_view_and_containers.css" />
+   </stylesheets>
+</AnchorPane>

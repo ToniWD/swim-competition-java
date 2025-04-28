@@ -1,2 +1,8 @@
 rootProject.name = 'Concurs_Inot_Pb3'
+include 'Client'
+include 'Server'
+include 'Networking'
+include 'Persistence'
+include 'Services'
+include 'Model'
 

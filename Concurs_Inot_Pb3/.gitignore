@@ -43,3 +43,6 @@ bin/
 
 ### Add after ###
 db.config
+**/client.properties
+**/server.properties
+*.log
