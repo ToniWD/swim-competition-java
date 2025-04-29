@@ -201,7 +201,7 @@ public class ServicesJsonProxy implements IServices {
         logger.info("Added participant");
     }
 
-    public void logout(User user, IObserver client) throws ServiceException {
+    public void logout(User user) throws ServiceException {
 
         Request req=JsonProtocolUtils.createLogoutRequest(user);
         sendRequest(req);

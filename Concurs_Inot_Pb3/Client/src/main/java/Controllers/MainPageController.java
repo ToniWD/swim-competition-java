@@ -209,7 +209,7 @@ public class MainPageController implements IObserver {
             controllerLogin.setAuthService(mainService);
 
             new Thread(() -> {
-                mainService.logout(user, this);
+                mainService.logout(user);
             }).start();
 
             register.close();

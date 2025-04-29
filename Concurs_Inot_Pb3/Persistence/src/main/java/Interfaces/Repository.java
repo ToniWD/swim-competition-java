@@ -15,7 +15,7 @@ public interface Repository<ID, E extends Entity<ID>> {
     Optional<E> findOne(ID id);
     /**
      * @return an {@code Iterable} with all entities.
-     * @return all entities
+
      */
     Iterable<E> findAll();
     /**

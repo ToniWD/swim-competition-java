@@ -58,10 +58,6 @@ public class MainService implements IMainService {
             try {
                 recordsRepository.save(record);
             }
-            catch (RepoException ex){
-                logger.error(ex);
-
-            }
             catch (Exception e) {
                 logger.error(e);
             }

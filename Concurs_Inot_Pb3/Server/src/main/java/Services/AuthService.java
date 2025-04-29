@@ -24,7 +24,7 @@ public class AuthService implements IAuthService {
     }
 
     @Override
-    public boolean authentificate(String username, String password) throws ServiceException {
+    public boolean authenticate(String username, String password) throws ServiceException {
         logger.info("Authenticating user " + username);
 
         if(username == null || username.isEmpty()) {

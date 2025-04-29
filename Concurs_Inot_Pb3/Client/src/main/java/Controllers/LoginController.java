@@ -62,7 +62,7 @@ public class LoginController  {
 
                     new Thread(() -> {
                         try {
-                            authService.logout(this.user, controller); // logout în fundal
+                            authService.logout(this.user); // logout în fundal
                         } catch (Exception e) {
                             logger.error("Logout failed", e);
                         } finally {

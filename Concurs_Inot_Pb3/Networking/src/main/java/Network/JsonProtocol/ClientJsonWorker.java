@@ -100,7 +100,7 @@ public class ClientJsonWorker implements Runnable, IObserver {
             logger.debug("Logout request {}",request.getUser().getUsername());
             User user= request.getUser();
             try {
-                services.logout(user, this);
+                services.logout(user);
                 connected=false;
                 return okResponse;
 

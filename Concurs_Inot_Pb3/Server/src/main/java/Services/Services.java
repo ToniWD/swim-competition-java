@@ -66,7 +66,7 @@ public class Services implements IServices {
 
     @Override
     public boolean login(String username, String password, IObserver client) {
-        if(authService.authentificate(username, password)){
+        if(authService.authenticate(username, password)){
             User user = new User(username, password);
             mainService.addClient(user, client);
             return true;
@@ -75,8 +75,8 @@ public class Services implements IServices {
     }
 
     @Override
-    public void logout(User user, IObserver client) throws ServiceException {
-        if (authService.authentificate(user.getUsername(), user.getPassword())) {
+    public void logout(User user) throws ServiceException {
+        if (authService.authenticate(user.getUsername(), user.getPassword())) {
             IObserver localClient = mainService.removeClient(user);
             if (localClient == null)
                 throw new ServiceException("User " + user.getId() + " is not logged in.");
